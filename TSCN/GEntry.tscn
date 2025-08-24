@@ -1,0 +1,321 @@
+[gd_scene load_steps=17 format=3 uid="uid://dskp426efiit"]
+
+[ext_resource type="Script" uid="uid://cgj47ycypd64x" path="res://SRC/GEntry.cs" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://gico771r0o3y" path="res://ART/igbg.png" id="2_piu7a"]
+[ext_resource type="Texture2D" uid="uid://bbwn21foj2k5s" path="res://ART/emoji/rolling_on_the_floor_laughing.png" id="3_5llxo"]
+[ext_resource type="Texture2D" uid="uid://bytv2g3re0wdk" path="res://ART/U2DShapes/Square.png" id="3_lulr0"]
+[ext_resource type="Texture2D" uid="uid://sq27c37ltale" path="res://ART/emoji/point_right.png" id="4_0u7bh"]
+[ext_resource type="Texture2D" uid="uid://c0peikxmha40h" path="res://ART/蜂蜜浏览器_QQ20250824-003603.png" id="4_fc3yv"]
+[ext_resource type="Texture2D" uid="uid://dnn4kdp3s3743" path="res://ART/emoji/gem.png" id="5_fc3yv"]
+[ext_resource type="Texture2D" uid="uid://dvkoxnoiriq8t" path="res://ART/emoji/innocent.png" id="5_xtrcu"]
+[ext_resource type="Texture2D" uid="uid://5e1dpbxaf4o0" path="res://ART/emoji/cloud.png" id="6_7c34m"]
+[ext_resource type="Texture2D" uid="uid://cvdtrucbjwu7p" path="res://ART/emoji/anger.png" id="7_gy3tp"]
+[ext_resource type="Texture2D" uid="uid://0bmcu75mjxqh" path="res://ART/emoji/bow_and_arrow.png" id="8_0u7bh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fc3yv"]
+font_size = 60
+outline_size = 2
+outline_color = Color(0, 0, 0, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tut_title"]
+font_size = 36
+outline_size = 2
+outline_color = Color(0, 0, 0, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_njlch"]
+font_size = 13
+outline_size = 2
+outline_color = Color(0, 0, 0, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tut_content"]
+font_size = 24
+font_color = Color(0.9, 0.9, 0.9, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tut_hint"]
+font_size = 20
+font_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="GEntry" type="Control" node_paths=PackedStringArray("startButton", "exitButton", "tutButton", "tutWindow", "bowRect")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_entry")
+startButton = NodePath("MenuContainer/StartButton")
+exitButton = NodePath("MenuContainer/ExitButton")
+tutButton = NodePath("MenuContainer/tutButton")
+tutWindow = NodePath("tut")
+bowRect = NodePath("A5bow")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2085.0
+offset_bottom = 1244.0
+texture = ExtResource("2_piu7a")
+
+[node name="XD" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 281.0
+offset_right = 604.0
+offset_bottom = 499.0
+texture = ExtResource("3_5llxo")
+
+[node name="XD2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 628.0
+offset_top = 229.0
+offset_right = 846.0
+offset_bottom = 447.0
+texture = ExtResource("4_0u7bh")
+
+[node name="A1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1314.0
+offset_top = 165.0
+offset_right = 1487.0
+offset_bottom = 338.0
+texture = ExtResource("5_xtrcu")
+
+[node name="A2cloudR" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1332.0
+offset_top = 238.0
+offset_right = 1587.0
+offset_bottom = 493.0
+texture = ExtResource("6_7c34m")
+
+[node name="A3cloudL" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1242.0
+offset_top = 280.0
+offset_right = 1415.0
+offset_bottom = 453.0
+texture = ExtResource("6_7c34m")
+
+[node name="A4angry" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1426.0
+offset_top = 198.0
+offset_right = 1586.0
+offset_bottom = 358.0
+scale = Vector2(0.315, 0.315)
+texture = ExtResource("7_gy3tp")
+
+[node name="A5bow" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1326.0
+offset_top = 456.0
+offset_right = 1504.0
+offset_bottom = 634.0
+rotation = -2.35619
+texture = ExtResource("8_0u7bh")
+
+[node name="我" type="Label" parent="."]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 150.0
+offset_right = 413.0
+offset_bottom = 315.0
+rotation = -0.445059
+theme_override_font_sizes/font_size = 120
+text = "我"
+
+[node name="是" type="Label" parent="."]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 50.0
+offset_right = 686.0
+offset_bottom = 215.0
+rotation = -0.218166
+theme_override_font_sizes/font_size = 120
+text = "是"
+
+[node name="神人" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1568.0
+offset_top = 27.9999
+offset_right = 1897.0
+offset_bottom = 194.0
+rotation = 0.546221
+theme_override_font_sizes/font_size = 120
+text = "神&人"
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="MenuContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "开始游戏"
+
+[node name="tutButton" type="Button" parent="MenuContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "游戏教程"
+
+[node name="ExitButton" type="Button" parent="MenuContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "退出游戏"
+
+[node name="tut" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Background" type="TextureRect" parent="tut"]
+self_modulate = Color(0.03244, 0.0665548, 0.223928, 0.95)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lulr0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="tut"]
+layout_mode = 2
+offset_left = 604.0
+offset_top = 56.0
+offset_right = 1338.0
+offset_bottom = 1013.0
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="tut/VBoxContainer"]
+layout_mode = 2
+text = "游戏教程"
+label_settings = SubResource("LabelSettings_fc3yv")
+horizontal_alignment = 1
+
+[node name="Section1" type="VBoxContainer" parent="tut/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Section1Title" type="Label" parent="tut/VBoxContainer/Section1"]
+layout_mode = 2
+text = "温馨提示：这游戏设计上不是一个人能玩的"
+label_settings = SubResource("LabelSettings_tut_title")
+
+[node name="Section1Title2" type="Label" parent="tut/VBoxContainer/Section1"]
+layout_mode = 2
+text = "(中译中：等一个能单打通关的神人)"
+label_settings = SubResource("LabelSettings_njlch")
+
+[node name="Section1Content" type="HBoxContainer" parent="tut/VBoxContainer/Section1"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeyControls" type="VBoxContainer" parent="tut/VBoxContainer/Section1/Section1Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="KeyLabel" type="Label" parent="tut/VBoxContainer/Section1/Section1Content/KeyControls"]
+layout_mode = 2
+text = "😇：• A键向左 • D键向右"
+label_settings = SubResource("LabelSettings_tut_content")
+
+[node name="MouseControls" type="VBoxContainer" parent="tut/VBoxContainer/Section1/Section1Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="MouseLabel" type="Label" parent="tut/VBoxContainer/Section1/Section1Content/MouseControls"]
+layout_mode = 2
+text = "😄：鼠标拖动"
+label_settings = SubResource("LabelSettings_tut_content")
+
+[node name="Section2" type="VBoxContainer" parent="tut/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Section2Title" type="Label" parent="tut/VBoxContainer/Section2"]
+layout_mode = 2
+text = "游戏目标"
+label_settings = SubResource("LabelSettings_tut_title")
+
+[node name="Section2Content" type="HBoxContainer" parent="tut/VBoxContainer/Section2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TargetDescription" type="Label" parent="tut/VBoxContainer/Section2/Section2Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "😇 需要发射弹幕帮助😄击败怪物，但不能伤到😄，一旦😄受伤，游戏结束。"
+label_settings = SubResource("LabelSettings_tut_content")
+autowrap_mode = 2
+
+[node name="Section3" type="VBoxContainer" parent="tut/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Section3Title" type="Label" parent="tut/VBoxContainer/Section3"]
+layout_mode = 2
+text = "细节"
+label_settings = SubResource("LabelSettings_tut_title")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="tut/VBoxContainer/Section3"]
+layout_mode = 2
+
+[node name="RewardIcon" type="TextureRect" parent="tut/VBoxContainer/Section3/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_fc3yv")
+stretch_mode = 3
+
+[node name="Section3Content" type="Label" parent="tut/VBoxContainer/Section3/HBoxContainer"]
+layout_mode = 2
+text = "   警戒线表示😇的散射范围"
+label_settings = SubResource("LabelSettings_tut_content")
+
+[node name="Section4Content" type="HBoxContainer" parent="tut/VBoxContainer/Section3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="RewardIcon" type="TextureRect" parent="tut/VBoxContainer/Section3/Section4Content"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_fc3yv")
+
+[node name="RewardDescription" type="Label" parent="tut/VBoxContainer/Section3/Section4Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "• 奖励道具、怪物被弹幕击中：加分
+• 😄擦弹：也有加分"
+label_settings = SubResource("LabelSettings_tut_content")
+autowrap_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="tut/VBoxContainer/Section3"]
+layout_mode = 2
+
+[node name="CloseHint" type="Label" parent="tut/VBoxContainer"]
+layout_mode = 2
+text = "💡 点击任意位置关闭教程"
+label_settings = SubResource("LabelSettings_tut_hint")
+horizontal_alignment = 1

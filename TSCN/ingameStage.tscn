@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqxaum8mijnby"]
+
+[ext_resource type="Script" uid="uid://m7ha8kg8g0fe" path="res://SRC/InGameNodeRoot.cs" id="1_leciw"]
+[ext_resource type="PackedScene" uid="uid://cyju77xgarhgr" path="res://PREFAB/WND_Fail.tscn" id="2_mtlk1"]
+[ext_resource type="PackedScene" uid="uid://dky6uaapnrvga" path="res://PREFAB/PF_EmitterBar.tscn" id="2_refhc"]
+[ext_resource type="Texture2D" uid="uid://cwgsux8mtjme3" path="res://ART/emoji/note_export.png" id="7_bu753"]
+[ext_resource type="VideoStream" uid="uid://p6x7wic28w4a" path="res://ART/video/SL2025hz.ogv" id="7_jx0tx"]
+[ext_resource type="PackedScene" uid="uid://d1rivywhp8s2n" path="res://PREFAB/PF_MoveBar.tscn" id="8_bu753"]
+[ext_resource type="FontFile" uid="uid://d13ry5en57lp0" path="res://ART/ALIMAMASHUHEITI-BOLD.TTF" id="8_leciw"]
+[ext_resource type="Script" uid="uid://df3sd7c56xgj5" path="res://SRC/UI_ScoreWindow.cs" id="9_leciw"]
+[ext_resource type="PackedScene" uid="uid://bqxvn8yqxqxqx" path="res://PREFAB/WND_Success.tscn" id="10_success"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jx0tx"]
+viewport_path = NodePath("SubViewport111")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bu753"]
+font = ExtResource("8_leciw")
+font_size = 40
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2aqyc"]
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 300, 0, 300)
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("wndSuccess", "wndFail")]
+script = ExtResource("1_leciw")
+wndSuccess = NodePath("WndSuccess")
+wndFail = NodePath("WndFail")
+ManualBPM = 151.0
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = SubResource("ViewportTexture_jx0tx")
+
+[node name="EmitterBar" parent="." instance=ExtResource("2_refhc")]
+position = Vector2(101, 0)
+
+[node name="WndFail" parent="." instance=ExtResource("2_mtlk1")]
+visible = false
+
+[node name="WndSuccess" parent="." instance=ExtResource("10_success")]
+visible = false
+
+[node name="MoveBar" parent="." instance=ExtResource("8_bu753")]
+position = Vector2(275, 1060)
+collision_mask = 10
+
+[node name="ScoreWindow" type="CanvasLayer" parent="."]
+script = ExtResource("9_leciw")
+
+[node name="TextureRect" type="TextureRect" parent="ScoreWindow"]
+texture_filter = 1
+offset_left = 1702.0
+offset_top = 19.0
+offset_right = 1768.0
+offset_bottom = 86.0
+texture = ExtResource("7_bu753")
+
+[node name="Panel" type="Panel" parent="ScoreWindow"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 80.0
+
+[node name="ScoreLabel" type="Label" parent="ScoreWindow/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_bu753")
+vertical_alignment = 1
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, 1081)
+occluder = SubResource("OccluderPolygon2D_2aqyc")
+metadata/_edit_group_ = true
+
+[node name="SubViewport111" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SubViewport111"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("7_jx0tx")
+autoplay = true
+expand = true
+loop = true

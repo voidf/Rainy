@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxgcb7vvgpuch"]
+
+[ext_resource type="Script" uid="uid://bjf484dtbxgvj" path="res://SRC/PfMeteor.cs" id="1_lejc6"]
+[ext_resource type="Texture2D" uid="uid://bif6np2aeawqa" path="res://ART/U2DShapes/Circle.png" id="2_lejc6"]
+[ext_resource type="Texture2D" uid="uid://y5g7cs3tih5e" path="res://ART/emoji/droplet.png" id="2_n3ii0"]
+[ext_resource type="AudioStream" uid="uid://ppqylya8t47h" path="res://AUDIO/八音盒.ogg" id="3_d8bgh"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0elv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nbh0t"]
+radius = 16.0
+
+[sub_resource type="Curve" id="Curve_d8bgh"]
+_data = [Vector2(0.254762, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n3ii0"]
+curve = SubResource("Curve_d8bgh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lejc6"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+inherit_velocity_ratio = 0.75
+direction = Vector3(0, -1, 0)
+spread = 75.0
+initial_velocity_min = 600.0
+initial_velocity_max = 1500.0
+gravity = Vector3(0, 1200, 0)
+scale_min = 0.03
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_n3ii0")
+
+[sub_resource type="Gradient" id="Gradient_n3ii0"]
+offsets = PackedFloat32Array(0, 0.643345)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n3ii0"]
+gradient = SubResource("Gradient_n3ii0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+
+[node name="Meteor" type="Area2D" node_paths=PackedStringArray("exp_light", "exp_sprite", "exp_burstFX", "exp_se", "exp_collider")]
+material = SubResource("CanvasItemMaterial_f0elv")
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_lejc6")
+exp_light = NodePath("PointLight2D2")
+exp_sprite = NodePath("Sprite2D")
+exp_burstFX = NodePath("BurstFX")
+exp_se = NodePath("AudioStreamPlayer2D")
+exp_collider = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nbh0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("2_n3ii0")
+
+[node name="BurstFX" type="GPUParticles2D" parent="."]
+self_modulate = Color(0.321569, 0.607843, 0.890196, 1)
+emitting = false
+amount = 18
+texture = ExtResource("2_lejc6")
+lifetime = 0.25
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_lejc6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_d8bgh")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+energy = 0.3
+texture = SubResource("GradientTexture2D_n3ii0")

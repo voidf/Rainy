@@ -1,0 +1,120 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqxvn8yqxqxqx"]
+
+[ext_resource type="Script" uid="uid://b6uj7pn40lf61" path="res://SRC/WndSuccess.cs" id="1_0xqxq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ewfuh"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_quaf2"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_rl2lp"]
+font_size = 48
+
+[node name="WndSuccess" type="CanvasLayer" node_paths=PackedStringArray("LabelSeed", "LabelScore", "LabelText", "ButtonMainMenu", "ButtonRetry", "ButtonQuit", "LabelContinueCount")]
+script = ExtResource("1_0xqxq")
+LabelSeed = NodePath("Panel/VBoxContainer/LblSeed")
+LabelScore = NodePath("Panel/VBoxContainer/LblScore")
+LabelText = NodePath("Panel/VBoxContainer/saohua")
+ButtonMainMenu = NodePath("Panel/ButtonContainer/ButtonMainMenu")
+ButtonRetry = NodePath("Panel/ButtonContainer/ButtonRetry")
+ButtonQuit = NodePath("Panel/ButtonContainer/ButtonQuit")
+LabelContinueCount = NodePath("Panel/VBoxContainer/LblCont")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -417.0
+offset_top = -323.0
+offset_right = 409.0
+offset_bottom = 419.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = 20.0
+offset_right = 55.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "🎉🎉 🎉 恭喜通关！感谢游玩！🎉 🎉 🎉 
+"
+label_settings = SubResource("LabelSettings_ewfuh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="saohua" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "我是神人"
+label_settings = SubResource("LabelSettings_ewfuh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="LblSeed" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "🎲随机种子: 114514"
+label_settings = SubResource("LabelSettings_quaf2")
+horizontal_alignment = 1
+
+[node name="LblScore" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "🎵总分数: 10000"
+label_settings = SubResource("LabelSettings_rl2lp")
+horizontal_alignment = 1
+
+[node name="LblCont" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "💀续关次数: 10000"
+label_settings = SubResource("LabelSettings_rl2lp")
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = -57.0
+offset_top = 480.0
+offset_right = 879.0
+offset_bottom = 571.0
+alignment = 1
+
+[node name="ButtonMainMenu" type="Button" parent="Panel/ButtonContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "主菜单"
+
+[node name="ButtonRetry" type="Button" parent="Panel/ButtonContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "重试"
+
+[node name="ButtonQuit" type="Button" parent="Panel/ButtonContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "退出"

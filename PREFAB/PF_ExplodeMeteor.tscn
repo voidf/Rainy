@@ -1,0 +1,182 @@
+[gd_scene load_steps=26 format=3 uid="uid://ispir7mluslp"]
+
+[ext_resource type="Script" uid="uid://cclpcalf1t7at" path="res://SRC/PfExplodeMeteor.cs" id="1_explode"]
+[ext_resource type="Texture2D" uid="uid://bif6np2aeawqa" path="res://ART/U2DShapes/Circle.png" id="2_1ipai"]
+[ext_resource type="Texture2D" uid="uid://otdxb03pyky2" path="res://ART/fireatlas.png" id="2_32oq5"]
+[ext_resource type="Texture2D" uid="uid://dgaxojdlavqm0" path="res://ART/circle.png" id="3_32oq5"]
+[ext_resource type="AudioStream" uid="uid://ppqylya8t47h" path="res://AUDIO/八音盒.ogg" id="3_k7f47"]
+[ext_resource type="Shader" uid="uid://btuolpomsa5u2" path="res://shaders/circle_mask.gdshader" id="5_32oq5"]
+[ext_resource type="Script" uid="uid://bjbqep4rsq47y" path="res://SRC/ShockwaveArea.cs" id="7_6tud1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tud1"]
+atlas = ExtResource("2_32oq5")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjkrf"]
+atlas = ExtResource("2_32oq5")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75t2o"]
+atlas = ExtResource("2_32oq5")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6o0a"]
+atlas = ExtResource("2_32oq5")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytr4h"]
+atlas = ExtResource("2_32oq5")
+region = Rect2(104, 0, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qsexl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tud1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjkrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75t2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6o0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytr4h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_32oq5"]
+offsets = PackedFloat32Array(0, 0.643345)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_32oq5"]
+gradient = SubResource("Gradient_32oq5")
+width = 400
+height = 400
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7f47"]
+radius = 16.0
+
+[sub_resource type="Curve" id="Curve_6tud1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jx0tx"]
+curve = SubResource("Curve_6tud1")
+
+[sub_resource type="Curve" id="Curve_gjkrf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_leciw"]
+curve = SubResource("Curve_gjkrf")
+
+[sub_resource type="Curve" id="Curve_75t2o"]
+_data = [Vector2(0.142857, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mx2gv"]
+curve = SubResource("Curve_75t2o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u6o0a"]
+lifetime_randomness = 0.66
+particle_flag_disable_z = true
+angle_max = 360.0
+inherit_velocity_ratio = 0.783
+direction = Vector3(0, -1, 0)
+spread = 150.0
+initial_velocity_min = 600.0
+initial_velocity_max = 900.0
+gravity = Vector3(0, 1200, 0)
+scale_min = 0.02
+scale_max = 0.04
+scale_curve = SubResource("CurveTexture_mx2gv")
+color = Color(1, 0.172645, 0.40196, 1)
+alpha_curve = SubResource("CurveTexture_jx0tx")
+emission_curve = SubResource("CurveTexture_leciw")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.76
+collision_use_scale = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_shockwave"]
+shader = ExtResource("5_32oq5")
+shader_parameter/progress = 0.0
+shader_parameter/softness = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shockwave"]
+radius = 256.0
+
+[node name="ExplodeMeteor" type="Area2D" node_paths=PackedStringArray("shockwaveNode", "shockwaveCollider", "shockwaveSprite", "shockwaveLight", "exp_light", "exp_anim", "exp_burstFX", "exp_se", "exp_collider")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_explode")
+shockwaveNode = NodePath("ShockwaveNode")
+shockwaveCollider = NodePath("ShockwaveNode/ShockwaveArea/ShockwaveCollision")
+shockwaveSprite = NodePath("ShockwaveNode/ShockwaveSprite")
+shockwaveLight = NodePath("ShockwaveNode/PointLight2D2")
+exp_light = NodePath("PointLight2D")
+exp_anim = NodePath("AnimatedSprite2D")
+exp_burstFX = NodePath("CollisionRigid")
+exp_se = NodePath("AudioStreamPlayer2D")
+exp_collider = NodePath("MeteorCollision")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_qsexl")
+frame = 3
+frame_progress = 0.90348
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.192157, 0, 1)
+texture = SubResource("GradientTexture2D_32oq5")
+
+[node name="MeteorCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k7f47")
+
+[node name="CollisionRigid" type="GPUParticles2D" parent="." groups=["trailable_particles"]]
+texture_filter = 4
+emitting = false
+amount = 16
+texture = ExtResource("3_32oq5")
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 0
+interpolate = false
+collision_base_size = 0.05
+process_material = SubResource("ParticleProcessMaterial_u6o0a")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_k7f47")
+
+[node name="ShockwaveNode" type="Node2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="PointLight2D2" type="PointLight2D" parent="ShockwaveNode"]
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_32oq5")
+
+[node name="ShockwaveSprite" type="Sprite2D" parent="ShockwaveNode"]
+modulate = Color(1, 0.491371, 0.399435, 0.8)
+material = SubResource("ShaderMaterial_shockwave")
+scale = Vector2(2, 2)
+texture = ExtResource("2_1ipai")
+
+[node name="ShockwaveArea" type="Area2D" parent="ShockwaveNode"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("7_6tud1")
+
+[node name="ShockwaveCollision" type="CollisionShape2D" parent="ShockwaveNode/ShockwaveArea"]
+shape = SubResource("CircleShape2D_shockwave")
+disabled = true

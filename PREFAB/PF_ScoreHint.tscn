@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4n82642wl4y7"]
+
+[ext_resource type="Texture2D" uid="uid://cwgsux8mtjme3" path="res://ART/emoji/note_export.png" id="1_l1qna"]
+[ext_resource type="Script" uid="uid://otgc58kggmk5" path="res://SRC/PfScoreHint.cs" id="2_kwouu"]
+
+[node name="PF_ScoreHint" type="Sprite2D"]
+texture = ExtResource("1_l1qna")
+script = ExtResource("2_kwouu")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://dky6uaapnrvga"]
+
+[ext_resource type="Script" uid="uid://d1e17udefk86w" path="res://SRC/PfEmitterBar.cs" id="2_ogf6t"]
+[ext_resource type="Shader" uid="uid://b51ocwdaek7tw" path="res://shaders/caution_stripe.gdshader" id="2_pl0dv"]
+[ext_resource type="Texture2D" uid="uid://bytv2g3re0wdk" path="res://ART/U2DShapes/Square.png" id="3_fvaaq"]
+[ext_resource type="Texture2D" uid="uid://brbm1q7wrmjjc" path="res://ART/emoji/innocent_export.png" id="4_pbb81"]
+[ext_resource type="Texture2D" uid="uid://7olpw2fkddlv" path="res://ART/emoji/cloud_export.png" id="5_i6gj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbb81"]
+shader = ExtResource("2_pl0dv")
+shader_parameter/color_yellow = Color(1, 0.85, 0, 1)
+shader_parameter/color_black = Color(0.08, 0.08, 0.08, 1)
+shader_parameter/angle_deg = 30.0
+shader_parameter/speed = 0.0200001
+shader_parameter/stripe_px = 8.0
+shader_parameter/edge_softness = 0.0
+
+[sub_resource type="Gradient" id="Gradient_3fx86"]
+offsets = PackedFloat32Array(0, 0.643345)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pbb81"]
+gradient = SubResource("Gradient_3fx86")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+
+[node name="EmitterBar" type="Node2D" node_paths=PackedStringArray("exp_emitter", "exp_range")]
+self_modulate = Color(0.905634, 0.536054, 0.575358, 1)
+script = ExtResource("2_ogf6t")
+exp_emitter = NodePath("Emitter")
+exp_range = NodePath("range")
+MOVESPEED = 5.0
+HoldAccMaxTime = 0.4
+AccMaxRate = 4.0
+
+[node name="range" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pbb81")
+position = Vector2(0, 1075.44)
+scale = Vector2(0.335, 0.0346873)
+texture = ExtResource("3_fvaaq")
+
+[node name="C1" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-27, 87)
+scale = Vector2(1.81798, 1.93598)
+texture = ExtResource("5_i6gj0")
+
+[node name="C2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(20, 103)
+scale = Vector2(2, 2)
+texture = ExtResource("5_i6gj0")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 78)
+scale = Vector2(1.87143, 1.92857)
+energy = 0.5
+texture = SubResource("GradientTexture2D_pbb81")
+
+[node name="Emitter" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 61)
+scale = Vector2(2, 2)
+texture = ExtResource("4_pbb81")

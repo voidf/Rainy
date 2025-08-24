@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr63i44081r5a"]
+
+[ext_resource type="Texture2D" uid="uid://dgaxojdlavqm0" path="res://ART/circle.png" id="1_nbh0t"]
+[ext_resource type="Script" uid="uid://ljoab8lcsxyc" path="res://SRC/PfPinBall.cs" id="2_yc7v4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0elv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nbh0t"]
+radius = 200.0
+
+[node name="PinBall" type="RigidBody2D"]
+modulate = Color(0.320696, 0.608007, 0.889075, 1)
+material = SubResource("CanvasItemMaterial_f0elv")
+script = ExtResource("2_yc7v4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nbh0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.321569, 0.607843, 0.890196, 1)
+texture = ExtResource("1_nbh0t")

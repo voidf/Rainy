@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyju77xgarhgr"]
+
+[ext_resource type="Script" uid="uid://fsx3k4k5e4yv" path="res://SRC/WndFail.cs" id="1_fail"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mf6pq"]
+font_size = 48
+font_color = Color(1, 0.2, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tytuw"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_08uw3"]
+font_size = 32
+
+[node name="WndFail" type="CanvasLayer" node_paths=PackedStringArray("returnToMenuButton", "retryButton", "continueButton", "scoreLabel", "sloganLabel")]
+script = ExtResource("1_fail")
+returnToMenuButton = NodePath("Panel/ButtonContainer/ReturnToMenuButton")
+retryButton = NodePath("Panel/ButtonContainer/RetryButton")
+continueButton = NodePath("Panel/ButtonContainer/continueBtn")
+scoreLabel = NodePath("Panel/CenterContainer/VBoxContainer/ScoreLabel")
+sloganLabel = NodePath("Panel/CenterContainer/VBoxContainer/slogan")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+offset_left = 760.0
+offset_top = 815.0
+offset_right = 1160.0
+offset_bottom = 865.0
+theme_override_constants/separation = 20
+
+[node name="continueBtn" type="Button" parent="Panel/ButtonContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "续关
+"
+
+[node name="RetryButton" type="Button" parent="Panel/ButtonContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "重试"
+
+[node name="ReturnToMenuButton" type="Button" parent="Panel/ButtonContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "返回主菜单"
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="GameOverLabel" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "游戏结束"
+label_settings = SubResource("LabelSettings_mf6pq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slogan" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "石墩子石墩子"
+label_settings = SubResource("LabelSettings_tytuw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "🎵 最终得分: 0"
+label_settings = SubResource("LabelSettings_08uw3")
+horizontal_alignment = 1
+vertical_alignment = 1

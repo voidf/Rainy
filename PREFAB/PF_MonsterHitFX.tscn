@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvuqlgxc4ewoq"]
+
+[ext_resource type="Texture2D" uid="uid://bjcjs6ryjr1om" path="res://ART/emoji/star.png" id="1_uxy0m"]
+[ext_resource type="Script" uid="uid://dbf6q2uibxpgx" path="res://SRC/PfMonsterHitFx.cs" id="2_50btt"]
+
+[sub_resource type="Curve" id="Curve_f0elv"]
+_data = [Vector2(0.254762, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n3ii0"]
+curve = SubResource("Curve_f0elv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2xbdt"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+inherit_velocity_ratio = 0.75
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 1200, 0)
+scale_min = 0.03
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_n3ii0")
+
+[node name="MonsterHitFX" type="GPUParticles2D"]
+emitting = false
+amount = 9
+texture = ExtResource("1_uxy0m")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_2xbdt")
+script = ExtResource("2_50btt")
