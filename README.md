@@ -2,6 +2,8 @@
 
 ![](Rainy.gif)
 
+[bilibili流程视频](https://www.bilibili.com/video/BV1LFeLzMEqg)
+
 > 建议改成：自我介绍
 
 > 聚光灯48h游戏创作挑战杭州站 参赛作品 场次主题：双人成行
